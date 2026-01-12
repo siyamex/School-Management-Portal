@@ -1,0 +1,267 @@
+/* Custom Styles for School Portal */
+
+/* Hero Pattern Background */
+.hero-pattern {
+    background-color: hsl(var(--b1));
+    background-image:
+        radial-gradient(circle at 25px 25px, hsl(var(--p) / 0.05) 2%, transparent 0%),
+        radial-gradient(circle at 75px 75px, hsl(var(--s) / 0.05) 2%, transparent 0%);
+    background-size: 100px 100px;
+}
+
+/* Glassmorphism effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .glass-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth transitions */
+.transition-all {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: hsl(var(--b2));
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--bc) / 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--bc) / 0.5);
+}
+
+/* Stats card glow effect */
+.stat-glow {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.stat-glow:hover::before {
+    opacity: 1;
+}
+
+/* Badge animations */
+.badge-bounce {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Notification dot */
+.notification-dot {
+    position: relative;
+}
+
+.notification-dot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--er));
+    border-radius: 50%;
+    border: 2px solid hsl(var(--b1));
+}
+
+/* Table hover effect - FORCE LIGHT COLORS */
+.table tbody tr {
+    transition: all 0.2s;
+}
+
+/* Maximum specificity to override DaisyUI */
+table tbody tr:hover,
+.table tbody tr:hover,
+.table-zebra tbody tr:hover,
+.table.table-zebra tbody tr:hover {
+    background-color: rgba(96, 165, 250, 0.15) !important;
+    /* Lighter blue for better visibility */
+    background: rgba(96, 165, 250, 0.15) !important;
+    color: inherit !important;
+    transform: scale(1.01);
+}
+
+/* Ensure zebra stripes don't interfere */
+.table-zebra tbody tr:nth-child(even):hover {
+    background-color: rgba(96, 165, 250, 0.15) !important;
+    background: rgba(96, 165, 250, 0.15) !important;
+}
+
+/* Dark mode override */
+[data-theme="dark"] .table tbody tr:hover,
+[data-theme="dark"] .table-zebra tbody tr:hover {
+    background-color: rgba(96, 165, 250, 0.2) !important;
+    background: rgba(96, 165, 250, 0.2) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Force light selection colors */
+::selection {
+    background-color: rgba(96, 165, 250, 0.4) !important;
+    /* Light blue */
+    color: inherit !important;
+}
+
+::-moz-selection {
+    background-color: rgba(96, 165, 250, 0.4) !important;
+    color: inherit !important;
+}
+
+/* Card hover lift */
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Progress bar animation */
+.progress-animate {
+    animation: progress-grow 1.5s ease-out;
+}
+
+@keyframes progress-grow {
+    from {
+        width: 0;
+    }
+}
+
+/* Skeleton loading */
+.skeleton {
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    .print-full-width {
+        width: 100% !important;
+        max-width: none !important;
+    }
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+    .mobile-menu-open {
+        overflow: hidden;
+    }
+}
+
+/* Status badges */
+.status-active {
+    @apply badge badge-success;
+}
+
+.status-pending {
+    @apply badge badge-warning;
+}
+
+.status-inactive {
+    @apply badge badge-error;
+}
+
+/* Avatar with status indicator */
+.avatar-status {
+    position: relative;
+}
+
+.avatar-status::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background: hsl(var(--su));
+    border: 2px solid hsl(var(--b1));
+    border-radius: 50%;
+}
+
+/* Timeline styles */
+.timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: hsl(var(--bc) / 0.1);
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    background: hsl(var(--p));
+    border: 2px solid hsl(var(--b1));
+    border-radius: 50%;
+}
+
+/* Chart container */
+.chart-container {
+    position: relative;
+    height: 300px;
+}
